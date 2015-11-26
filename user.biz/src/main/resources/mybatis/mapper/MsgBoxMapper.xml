@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.quxiu.user.mapper.MsgBoxMapper">
+	<resultMap id="BaseResultMap" type="MsgBox">
+		<id column="id" property="id" javaType="java.lang.Long" />
+		<result column="title" property="title" javaType="java.lang.String" />
+		<result column="content" property="content" javaType="java.lang.String" />
+		<result column="from_user_id" property="fromUserId" javaType="java.lang.Long" />
+		<result column="to_user_id" property="toUserId" javaType="java.lang.Long" />
+		
+		<result column="create_time" property="createTime" javaType="java.util.Date" />
+		<result column="is_read" property="isRead" javaType="java.lang.Integer" />
+		<result column="is_delete" property="isDelete" javaType="java.lang.Integer" />
+		<result column="system_msg_id" property="systemMsgId" javaType="java.lang.Long" />
+		<result column="type" property="type" javaType="java.lang.Integer" />
+		<result column="group_key" property="groupKey" javaType="java.lang.String" />
+		<result column="is_notice" property="isNotice" javaType="java.lang.Integer" />
+	</resultMap>
+
+
+	<sql id="Base_Colun_list">
+
+		tr.id id ,tr.title title,tr.content content ,tr.from_user_id
+		from_user_id
+		,tr.to_user_id to_user_id,tr.create_time create_time ,tr.is_read
+		is_read,tr.is_delete is_delete
+		,tr.system_msg_id system_msg_id ,tr.type
+		type,tr.group_key group_key ,tr.is_notice
+		is_notice
+	</sql>
+
+	<select id="getMsgBoxList" resultMap="BaseResultMap"
+		parameterType="map">
+
+		select
+		<include refid="Base_Colun_list" />
+		from ve_msg_box tr order by tr.id
+		limit #{startIndex},#{pageSize}
+
+	</select>
+
+	<select id="get" parameterType="java.lang.Integer"		resultMap="BaseResultMap">
+
+		select
+		<include refid="Base_Colun_list" />
+		from ve_msg_box tr 
+		where tr.id = #{id,jdbcType=INTEGER}
+		
+	</select>
+
+	<select id="queryAllRows" resultType="java.lang.Integer">
+		select count(1) from
+		ve_msg_box
+	</select>
+
+	<delete id="deleteByIds" parameterType="map">
+		delete from ve_msg_box
+		where id in (#{ids})
+	</delete>
+
+
+</mapper>

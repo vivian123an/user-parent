@@ -1,0 +1,1087 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.quxiu.user.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="true_name" property="trueName" jdbcType="VARCHAR" />
+    <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
+    <result column="time_create" property="timeCreate" jdbcType="TIMESTAMP" />
+    <result column="time_update" property="timeUpdate" jdbcType="TIMESTAMP" />
+    <result column="time_login" property="timeLogin" jdbcType="TIMESTAMP" />
+    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+    <result column="group_id" property="groupId" jdbcType="INTEGER" />
+    <result column="is_effect" property="isEffect" jdbcType="BIT" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="verify" property="verify" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="referral_count" property="referralCount" jdbcType="INTEGER" />
+    <result column="password_verify" property="passwordVerify" jdbcType="VARCHAR" />
+    <result column="integrate_id" property="integrateId" jdbcType="INTEGER" />
+    <result column="lottery_mobile" property="lotteryMobile" jdbcType="VARCHAR" />
+    <result column="lottery_verify" property="lotteryVerify" jdbcType="VARCHAR" />
+    <result column="verify_create_time" property="verifyCreateTime" jdbcType="INTEGER" />
+    <result column="referer" property="referer" jdbcType="VARCHAR" />
+    <result column="login_pay_time" property="loginPayTime" jdbcType="INTEGER" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="BIT" />
+    <result column="is_merchant" property="isMerchant" jdbcType="BIT" />
+    <result column="location_id" property="locationId" jdbcType="INTEGER" />
+    <result column="level_id" property="levelId" jdbcType="INTEGER" />
+    <result column="point" property="point" jdbcType="INTEGER" />
+    <result column="p_user_name" property="pUserName" jdbcType="VARCHAR" />
+    <result column="alipay_id" property="alipayId" jdbcType="VARCHAR" />
+    <result column="sina_id" property="sinaId" jdbcType="VARCHAR" />
+    <result column="sina_token" property="sinaToken" jdbcType="VARCHAR" />
+    <result column="is_syn_sina" property="isSynSina" jdbcType="BIT" />
+    <result column="tencent_id" property="tencentId" jdbcType="VARCHAR" />
+    <result column="t_access_token" property="tAccessToken" jdbcType="VARCHAR" />
+    <result column="t_openkey" property="tOpenkey" jdbcType="VARCHAR" />
+    <result column="t_openid" property="tOpenid" jdbcType="VARCHAR" />
+    <result column="is_syn_tencent" property="isSynTencent" jdbcType="BIT" />
+    <result column="qq_id" property="qqId" jdbcType="VARCHAR" />
+    <result column="taobao_id" property="taobaoId" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="profession" property="profession" jdbcType="VARCHAR" />
+    <result column="height" property="height" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="INTEGER" />
+    <result column="expected" property="expected" jdbcType="DATE" />
+    <result column="babysex" property="babysex" jdbcType="BIT" />
+    <result column="babybirthday" property="babybirthday" jdbcType="DATE" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="pwd_fix" property="pwdFix" jdbcType="TINYINT" />
+    <result column="auth_type" property="authType" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="source_type" property="sourceType" jdbcType="VARCHAR" />
+    <result column="division_id" property="divisionId" jdbcType="SMALLINT" />
+    <result column="port" property="port" jdbcType="BIT" />
+    <result column="id_card_name" property="idCardName" jdbcType="VARCHAR" />
+    <result column="id_card_no" property="idCardNo" jdbcType="VARCHAR" />
+    <result column="id_pics" property="idPics" jdbcType="VARCHAR" />
+    <result column="id_validated" property="idValidated" jdbcType="BIT" />
+    <result column="utm_medium" property="utmMedium" jdbcType="VARCHAR" />
+    <result column="invite_id" property="inviteId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="UserResultMap" type="UserDTO" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
+    <result column="time_login" property="timeLogin" jdbcType="TIMESTAMP" />
+    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+    <result column="group_id" property="groupId" jdbcType="INTEGER" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="is_effect" property="isEffect" jdbcType="BIT" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="p_name" property="pName" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="BIT" />
+    <result column="level_id" property="levelId" jdbcType="INTEGER" />
+    <result column="level_name" property="levelName" jdbcType="VARCHAR" />
+    <result column="point" property="point" jdbcType="INTEGER" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="source_type" property="sourceType" jdbcType="VARCHAR" />
+    <result column="division_id" property="divisionId" jdbcType="SMALLINT" />
+    <result column="port" property="port" jdbcType="BIT" />
+    <result column="id_card_name" property="idCardName" jdbcType="VARCHAR" />
+    <result column="id_card_no" property="idCardNo" jdbcType="VARCHAR" />
+    <result column="id_pics" property="idPics" jdbcType="VARCHAR" />
+    <result column="id_validated" property="idValidated" jdbcType="BIT" />
+    <result column="invite_id" property="inviteId" jdbcType="INTEGER" />
+    <result column="invite_name" property="inviteName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="User" extends="BaseResultMap" >
+    <result column="my_intro" property="myIntro" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    us.id , us.user_name, us.true_name, us.user_pwd, us.time_create, us.time_update, us.time_login, us.login_ip, 
+    us.group_id, us.is_effect, us.is_delete, us.email, us.mobile, us.score, us.money, us.verify, us.code, us.pid, us.referral_count, 
+    us.password_verify, us.integrate_id, us.lottery_mobile, us.lottery_verify, us.verify_create_time, 
+    us.referer, us.login_pay_time, us.province, us.city, us.sex, us.is_merchant, 
+    us.location_id, us.level_id, us.point, us.p_user_name, us.alipay_id, us.sina_id, us.sina_token, us.is_syn_sina, 
+    us.tencent_id, us.t_access_token, us.t_openkey, us.t_openid, us.is_syn_tencent, us.qq_id, us.taobao_id, 
+    us.birthday, us.profession, us.height, us.weight, us.expected, us.babysex, us.babybirthday, us.tel, us.pic, 
+    us.pwd_fix, us.auth_type, us.openid, us.source_type, us.division_id, us.port, us.id_card_name, us.id_card_no, 
+    us.id_pics, us.id_validated, us.utm_medium, us.invite_id
+  </sql>
+  <sql id="User_Column_List" >
+    us.id , us.user_name, us.user_pwd, us.time_login, us.login_ip, 
+    us.group_id, ug.name group_name, us.is_effect, us.is_delete, us.email, us.mobile, us.score, us.money, 
+    us.pid, us2.user_name as p_name, 
+    us.province, us.city, us.sex, us.level_id, ul.name as level_name,
+    us.point, us.tel, us.pic, us.source_type, us.division_id, us.port, us.id_card_name, us.id_card_no, 
+    us.id_pics, us.id_validated, us.invite_id, us3.user_name as invite_name
+  </sql>
+  <sql id="Blob_Column_List" >
+    us.my_intro
+  </sql>
+  <sql id="userQuery_whereConditions">
+	 <if test="query.userName != null">
+	  	and us.user_name like #{query.userName}
+	 </if>
+	 <if test="query.email != null">
+	  	and us.email like #{query.email}
+	 </if>
+	 <if test="query.mobile != null">
+	  	and us.mobile like #{query.mobile}
+	 </if>
+	 <if test="query.groupId != null">
+	  	and us.group_id = #{query.groupId}
+	 </if>
+	 <if test="query.pName != null">
+	  	and us2.user_name = #{query.pName}
+	 </if>
+	 <if test="query.inviteName != null">
+	  	and us3.user_name = #{query.inviteName}
+	 </if>
+  </sql>
+  
+  <select id="get" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ve_user us
+    where us.id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="customSelect" parameterType="map" resultType="hashmap">
+    select ${outColumns} from ve_user where ${keyColumn} = #{keyValue} limit 0,1
+  </select>
+  
+  <select id="getUserListPage" parameterType="map" resultMap="UserResultMap" useCache="false">
+  	  <include refid="getUserList"/>
+  </select>
+  <sql id="getUserList">
+  	  select distinct 
+  	  	<include refid="User_Column_List"/>
+	  from ve_user us
+	  left join ve_user_group ug on ug.id = us.group_id
+	  left join ve_user_level ul on ul.id = us.level_id
+	  left join ve_user us2 on us2.id = us.pid
+	  left join ve_user us3 on us3.id = us.invite_id
+  	  <where>
+	  	<include refid="userQuery_whereConditions"/>
+  	  </where>
+  	  order by us.id desc
+  </sql>
+  
+  
+  <select id="getSimpleUserListPage" parameterType="map" resultMap="BaseResultMap" useCache="false">
+  	  <include refid="getSimpleUserList"/>
+  </select>
+  <sql id="getSimpleUserList">
+  	  select distinct 
+  	  	<include refid="Base_Column_List"/>
+	  from ve_user us
+  	  <where>
+	  	<include refid="userQuery_whereConditions"/>
+  	  </where>
+  	  order by us.id desc
+  </sql>
+  
+  <insert id="save" parameterType="User" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+    insert into ve_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="trueName != null" >
+        true_name,
+      </if>
+      <if test="userPwd != null" >
+        user_pwd,
+      </if>
+      <if test="timeCreate != null" >
+        time_create,
+      </if>      
+      <if test="timeUpdate != null" >
+        time_update,
+      </if>
+      <if test="timeLogin != null" >
+        time_login,
+      </if>
+      <if test="loginIp != null" >
+        login_ip,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="isEffect != null" >
+        is_effect,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="verify != null" >
+        verify,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="referralCount != null" >
+        referral_count,
+      </if>
+      <if test="passwordVerify != null" >
+        password_verify,
+      </if>
+      <if test="integrateId != null" >
+        integrate_id,
+      </if>
+      <if test="lotteryMobile != null" >
+        lottery_mobile,
+      </if>
+      <if test="lotteryVerify != null" >
+        lottery_verify,
+      </if>
+      <if test="verifyCreateTime != null" >
+        verify_create_time,
+      </if>
+      <if test="referer != null" >
+        referer,
+      </if>
+      <if test="loginPayTime != null" >
+        login_pay_time,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="isMerchant != null" >
+        is_merchant,
+      </if>
+      <if test="locationId != null" >
+        location_id,
+      </if>
+      <if test="levelId != null" >
+        level_id,
+      </if>
+      <if test="point != null" >
+        point,
+      </if>
+      <if test="pUserName != null" >
+        p_user_name,
+      </if>
+      <if test="alipayId != null" >
+        alipay_id,
+      </if>
+      <if test="sinaId != null" >
+        sina_id,
+      </if>
+      <if test="sinaToken != null" >
+        sina_token,
+      </if>
+      <if test="isSynSina != null" >
+        is_syn_sina,
+      </if>
+      <if test="tencentId != null" >
+        tencent_id,
+      </if>
+      <if test="tAccessToken != null" >
+        t_access_token,
+      </if>
+      <if test="tOpenkey != null" >
+        t_openkey,
+      </if>
+      <if test="tOpenid != null" >
+        t_openid,
+      </if>
+      <if test="isSynTencent != null" >
+        is_syn_tencent,
+      </if>
+      <if test="qqId != null" >
+        qq_id,
+      </if>
+      <if test="taobaoId != null" >
+        taobao_id,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="profession != null" >
+        profession,
+      </if>
+      <if test="height != null" >
+        height,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="expected != null" >
+        expected,
+      </if>
+      <if test="babysex != null" >
+        babysex,
+      </if>
+      <if test="babybirthday != null" >
+        babybirthday,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="pwdFix != null" >
+        pwd_fix,
+      </if>
+      <if test="authType != null" >
+        auth_type,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="sourceType != null" >
+        source_type,
+      </if>
+      <if test="divisionId != null" >
+        division_id,
+      </if>
+      <if test="port != null" >
+        port,
+      </if>
+      <if test="idCardName != null" >
+        id_card_name,
+      </if>
+      <if test="idCardNo != null" >
+        id_card_no,
+      </if>
+      <if test="idPics != null" >
+        id_pics,
+      </if>
+      <if test="idValidated != null" >
+        id_validated,
+      </if>
+      <if test="utmMedium != null" >
+        utm_medium,
+      </if>
+      <if test="inviteId != null" >
+        invite_id,
+      </if>
+      <if test="myIntro != null" >
+        my_intro,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null" >
+        #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="timeCreate != null" >
+        #{timeCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeUpdate != null" >
+        #{timeUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeLogin != null" >
+        #{timeLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginIp != null" >
+        #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="isEffect != null" >
+        #{isEffect,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="verify != null" >
+        #{verify,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="referralCount != null" >
+        #{referralCount,jdbcType=INTEGER},
+      </if>
+      <if test="passwordVerify != null" >
+        #{passwordVerify,jdbcType=VARCHAR},
+      </if>
+      <if test="integrateId != null" >
+        #{integrateId,jdbcType=INTEGER},
+      </if>
+      <if test="lotteryMobile != null" >
+        #{lotteryMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="lotteryVerify != null" >
+        #{lotteryVerify,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyCreateTime != null" >
+        #{verifyCreateTime,jdbcType=INTEGER},
+      </if>
+      <if test="referer != null" >
+        #{referer,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPayTime != null" >
+        #{loginPayTime,jdbcType=INTEGER},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="isMerchant != null" >
+        #{isMerchant,jdbcType=BIT},
+      </if>
+      <if test="locationId != null" >
+        #{locationId,jdbcType=INTEGER},
+      </if>
+      <if test="levelId != null" >
+        #{levelId,jdbcType=INTEGER},
+      </if>
+      <if test="point != null" >
+        #{point,jdbcType=INTEGER},
+      </if>
+      <if test="pUserName != null" >
+        #{pUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayId != null" >
+        #{alipayId,jdbcType=VARCHAR},
+      </if>
+      <if test="sinaId != null" >
+        #{sinaId,jdbcType=VARCHAR},
+      </if>
+      <if test="sinaToken != null" >
+        #{sinaToken,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynSina != null" >
+        #{isSynSina,jdbcType=BIT},
+      </if>
+      <if test="tencentId != null" >
+        #{tencentId,jdbcType=VARCHAR},
+      </if>
+      <if test="tAccessToken != null" >
+        #{tAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="tOpenkey != null" >
+        #{tOpenkey,jdbcType=VARCHAR},
+      </if>
+      <if test="tOpenid != null" >
+        #{tOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynTencent != null" >
+        #{isSynTencent,jdbcType=BIT},
+      </if>
+      <if test="qqId != null" >
+        #{qqId,jdbcType=VARCHAR},
+      </if>
+      <if test="taobaoId != null" >
+        #{taobaoId,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="profession != null" >
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="expected != null" >
+        #{expected,jdbcType=DATE},
+      </if>
+      <if test="babysex != null" >
+        #{babysex,jdbcType=BIT},
+      </if>
+      <if test="babybirthday != null" >
+        #{babybirthday,jdbcType=DATE},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdFix != null" >
+        #{pwdFix,jdbcType=TINYINT},
+      </if>
+      <if test="authType != null" >
+        #{authType,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceType != null" >
+        #{sourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="divisionId != null" >
+        #{divisionId,jdbcType=SMALLINT},
+      </if>
+      <if test="port != null" >
+        #{port,jdbcType=BIT},
+      </if>
+      <if test="idCardName != null" >
+        #{idCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null" >
+        #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idPics != null" >
+        #{idPics,jdbcType=VARCHAR},
+      </if>
+      <if test="idValidated != null" >
+        #{idValidated,jdbcType=BIT},
+      </if>
+      <if test="utmMedium != null" >
+        #{utmMedium,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteId != null" >
+        #{inviteId,jdbcType=INTEGER},
+      </if>
+      <if test="myIntro != null" >
+        #{myIntro,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+       SELECT LAST_INSERT_ID();  
+    </selectKey>
+  </insert>
+  
+  <insert id="saveBatch" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+  	insert into ve_user(user_name, true_name, user_pwd, time_create, time_update, time_login, login_ip, group_id, 
+		is_effect, is_delete, email, mobile, score, money, verify, code, pid, referral_count, password_verify, 
+		integrate_id, lottery_mobile, lottery_verify, verify_create_time, referer, login_pay_time, 
+		province, city, sex, is_merchant, location_id, level_id, point, my_intro, p_user_name, 
+		alipay_id, sina_id, sina_token, is_syn_sina, tencent_id, t_access_token, t_openkey, t_openid, is_syn_tencent, 
+		qq_id, taobao_id, birthday, profession, height, weight, expected, babysex, babybirthday, tel, pic, pwd_fix, 
+		auth_type, openid, source_type, division_id, port, id_card_name, id_card_no, id_pics, id_validated, 
+		utm_medium, invite_id ) values
+  	<foreach collection="list" item="item" index="index" separator=",">  
+	    <trim prefix="(" suffix=")" suffixOverrides=",">
+			<choose>
+				<when test="item.userName == null">'',</when>
+				<otherwise>#{item.userName},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.trueName == null">'',</when>
+				<otherwise>#{item.trueName},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.userPwd == null">'',</when>
+				<otherwise>#{item.userPwd},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.timeCreate == null">now(),</when>
+				<otherwise>#{item.timeCreate},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.timeUpdate == null">'0000-00-00 00:00:00',</when>
+				<otherwise>#{item.timeUpdate},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.timeLogin == null">'0000-00-00 00:00:00',</when>
+				<otherwise>#{item.timeLogin},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.loginIp == null">'',</when>
+				<otherwise>#{item.loginIp},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.groupId == null">0,</when>
+				<otherwise>#{item.groupId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.isEffect == null">0,</when>
+				<otherwise>#{item.isEffect},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.isDelete == null">0,</when>
+				<otherwise>#{item.isDelete},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.email == null">'',</when>
+				<otherwise>#{item.email},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.mobile == null">'',</when>
+				<otherwise>#{item.mobile},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.score == null">0,</when>
+				<otherwise>#{item.score},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.money == null">'0.0000',</when>
+				<otherwise>#{item.money},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.verify == null">'',</when>
+				<otherwise>#{item.verify},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.code == null">'',</when>
+				<otherwise>#{item.code},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.pid == null">0,</when>
+				<otherwise>#{item.pid},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.referralCount == null">0,</when>
+				<otherwise>#{item.referralCount},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.passwordVerify == null">'',</when>
+				<otherwise>#{item.passwordVerify},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.integrateId == null">0,</when>
+				<otherwise>#{item.integrateId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.lotteryMobile == null">'',</when>
+				<otherwise>#{item.lotteryMobile},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.lotteryVerify == null">'',</when>
+				<otherwise>#{item.lotteryVerify},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.verifyCreateTime == null">0,</when>
+				<otherwise>#{item.verifyCreateTime},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.referer == null">'',</when>
+				<otherwise>#{item.referer},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.loginPayTime == null">0,</when>
+				<otherwise>#{item.loginPayTime},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.province == null">'',</when>
+				<otherwise>#{item.province},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.city == null">'',</when>
+				<otherwise>#{item.city},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.sex == null">0,</when>
+				<otherwise>#{item.sex},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.isMerchant == null">0,</when>
+				<otherwise>#{item.isMerchant},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.locationId == null">0,</when>
+				<otherwise>#{item.locationId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.levelId == null">0,</when>
+				<otherwise>#{item.levelId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.point == null">0,</when>
+				<otherwise>#{item.point},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.myIntro == null">'',</when>
+				<otherwise>#{item.myIntro},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.pUserName == null">'',</when>
+				<otherwise>#{item.pUserName},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.alipayId == null">'',</when>
+				<otherwise>#{item.alipayId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.sinaId == null">'',</when>
+				<otherwise>#{item.sinaId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.sinaToken == null">'',</when>
+				<otherwise>#{item.sinaToken},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.isSynSina == null">0,</when>
+				<otherwise>#{item.isSynSina},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.tencentId == null">'',</when>
+				<otherwise>#{item.tencentId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.tAccessToken == null">'',</when>
+				<otherwise>#{item.tAccessToken},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.tOpenkey == null">'',</when>
+				<otherwise>#{item.tOpenkey},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.tOpenid == null">'',</when>
+				<otherwise>#{item.tOpenid},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.isSynTencent == null">0,</when>
+				<otherwise>#{item.isSynTencent},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.qqId == null">'',</when>
+				<otherwise>#{item.qqId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.taobaoId == null">'',</when>
+				<otherwise>#{item.taobaoId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.birthday == null">'0000-00-00',</when>
+				<otherwise>#{item.birthday},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.profession == null">'',</when>
+				<otherwise>#{item.profession},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.height == null">0,</when>
+				<otherwise>#{item.height},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.weight == null">0,</when>
+				<otherwise>#{item.weight},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.expected == null">'0000-00-00',</when>
+				<otherwise>#{item.expected},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.babysex == null">0,</when>
+				<otherwise>#{item.babysex},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.babybirthday == null">'0000-00-00',</when>
+				<otherwise>#{item.babybirthday},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.tel == null">'',</when>
+				<otherwise>#{item.tel},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.pic == null">'',</when>
+				<otherwise>#{item.pic},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.pwdFix == null">0,</when>
+				<otherwise>#{item.pwdFix},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.authType == null">'',</when>
+				<otherwise>#{item.authType},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.openid == null">'',</when>
+				<otherwise>#{item.openid},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.sourceType == null">'',</when>
+				<otherwise>#{item.sourceType},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.divisionId == null">'',</when>
+				<otherwise>#{item.divisionId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.port == null">0,</when>
+				<otherwise>#{item.port},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.idCardName == null">'',</when>
+				<otherwise>#{item.idCardName},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.idCardNo == null">'',</when>
+				<otherwise>#{item.idCardNo},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.idPics == null">'',</when>
+				<otherwise>#{item.idPics},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.idValidated == null">0,</when>
+				<otherwise>#{item.idValidated},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.utmMedium == null">'',</when>
+				<otherwise>#{item.utmMedium},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.inviteId == null">0,</when>
+				<otherwise>#{item.inviteId},</otherwise>
+			</choose>
+	    </trim>
+    </foreach>
+  	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+    	SELECT LAST_INSERT_ID();  
+    </selectKey>
+  </insert>
+  
+  
+  <update id="update" parameterType="User" >
+    update ve_user
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="trueName != null" >
+        true_name = #{trueName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        user_pwd = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="timeUpdate != null" >
+        time_update = #{timeUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeLogin != null" >
+        time_login = #{timeLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginIp != null" >
+        login_ip = #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="isEffect != null" >
+        is_effect = #{isEffect,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="verify != null" >
+        verify = #{verify,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="referralCount != null" >
+        referral_count = #{referralCount,jdbcType=INTEGER},
+      </if>
+      <if test="passwordVerify != null" >
+        password_verify = #{passwordVerify,jdbcType=VARCHAR},
+      </if>
+      <if test="integrateId != null" >
+        integrate_id = #{integrateId,jdbcType=INTEGER},
+      </if>
+      <if test="lotteryMobile != null" >
+        lottery_mobile = #{lotteryMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="lotteryVerify != null" >
+        lottery_verify = #{lotteryVerify,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyCreateTime != null" >
+        verify_create_time = #{verifyCreateTime,jdbcType=INTEGER},
+      </if>
+      <if test="referer != null" >
+        referer = #{referer,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPayTime != null" >
+        login_pay_time = #{loginPayTime,jdbcType=INTEGER},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="isMerchant != null" >
+        is_merchant = #{isMerchant,jdbcType=BIT},
+      </if>
+      <if test="locationId != null" >
+        location_id = #{locationId,jdbcType=INTEGER},
+      </if>
+      <if test="levelId != null" >
+        level_id = #{levelId,jdbcType=INTEGER},
+      </if>
+      <if test="point != null" >
+        point = #{point,jdbcType=INTEGER},
+      </if>
+      <if test="pUserName != null" >
+        p_user_name = #{pUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="alipayId != null" >
+        alipay_id = #{alipayId,jdbcType=VARCHAR},
+      </if>
+      <if test="sinaId != null" >
+        sina_id = #{sinaId,jdbcType=VARCHAR},
+      </if>
+      <if test="sinaToken != null" >
+        sina_token = #{sinaToken,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynSina != null" >
+        is_syn_sina = #{isSynSina,jdbcType=BIT},
+      </if>
+      <if test="tencentId != null" >
+        tencent_id = #{tencentId,jdbcType=VARCHAR},
+      </if>
+      <if test="tAccessToken != null" >
+        t_access_token = #{tAccessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="tOpenkey != null" >
+        t_openkey = #{tOpenkey,jdbcType=VARCHAR},
+      </if>
+      <if test="tOpenid != null" >
+        t_openid = #{tOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="isSynTencent != null" >
+        is_syn_tencent = #{isSynTencent,jdbcType=BIT},
+      </if>
+      <if test="qqId != null" >
+        qq_id = #{qqId,jdbcType=VARCHAR},
+      </if>
+      <if test="taobaoId != null" >
+        taobao_id = #{taobaoId,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="profession != null" >
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null" >
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="expected != null" >
+        expected = #{expected,jdbcType=DATE},
+      </if>
+      <if test="babysex != null" >
+        babysex = #{babysex,jdbcType=BIT},
+      </if>
+      <if test="babybirthday != null" >
+        babybirthday = #{babybirthday,jdbcType=DATE},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdFix != null" >
+        pwd_fix = #{pwdFix,jdbcType=TINYINT},
+      </if>
+      <if test="authType != null" >
+        auth_type = #{authType,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceType != null" >
+        source_type = #{sourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="divisionId != null" >
+        division_id = #{divisionId,jdbcType=SMALLINT},
+      </if>
+      <if test="port != null" >
+        port = #{port,jdbcType=BIT},
+      </if>
+      <if test="idCardName != null" >
+        id_card_name = #{idCardName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNo != null" >
+        id_card_no = #{idCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="idPics != null" >
+        id_pics = #{idPics,jdbcType=VARCHAR},
+      </if>
+      <if test="idValidated != null" >
+        id_validated = #{idValidated,jdbcType=BIT},
+      </if>
+      <if test="utmMedium != null" >
+        utm_medium = #{utmMedium,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteId != null" >
+        invite_id = #{inviteId,jdbcType=INTEGER},
+      </if>
+      <if test="myIntro != null" >
+        my_intro = #{myIntro,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

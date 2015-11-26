@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.quxiu.user.mapper.UserGroupMapper" >
+  <resultMap id="BaseResultMap" type="me.quxiu.user.model.UserGroup" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="discount" property="discount" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ug.id , ug.name, ug.score, ug.discount
+  </sql>
+  
+  <select id="customSelect" parameterType="map" resultType="hashmap">
+    select ${outColumns} from ve_user_group where ${keyColumn} = #{keyValue} limit 0,1
+  </select>
+  
+  <select id="getSimpleUserGroupListPage" parameterType="map" resultMap="BaseResultMap" useCache="false">
+  	  <include refid="getUserGroupList"/>
+  </select>
+  <sql id="getUserGroupList">
+  	  select distinct 
+  	  	<include refid="Base_Column_List"/>
+	  from ve_user_group ug
+  	  <where>
+	  	<include refid="userGroupQuery_whereConditions"/>
+  	  </where>
+  	  order by ug.id desc
+  </sql>
+  
+    <sql id="userGroupQuery_whereConditions">
+	 <if test="query.name != null">
+	  	and ug.name like #{query.name}
+	 </if>
+	 <if test="query.score != null">
+	  	and ug.score = #{query.score}
+	 </if>
+	 <if test="query.discount != null">
+	  	and ug.discount = #{query.discount}
+	 </if>
+  </sql>
+  
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ve_user_group ug
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="save" parameterType="me.quxiu.user.model.UserGroup" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+    insert into ve_user_group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=DOUBLE},
+      </if>
+    </trim>
+	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+       SELECT LAST_INSERT_ID();  
+    </selectKey>    
+  </insert>
+  <update id="update" parameterType="me.quxiu.user.model.UserGroup" >
+    update ve_user_group
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <insert id="saveBatch" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+  	insert into ve_user_group(name, score, discount) values
+  	<foreach collection="list" item="item" index="index" separator=",">  
+	    <trim prefix="(" suffix=")" suffixOverrides=",">
+			<choose>
+				<when test="item.name == null">'',</when>
+				<otherwise>#{item.name},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.score == null">0,</when>
+				<otherwise>#{item.score},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.discount == null">0.0000,</when>
+				<otherwise>#{item.discount},</otherwise>
+			</choose>
+	    </trim>
+    </foreach>
+  	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+    	SELECT LAST_INSERT_ID();  
+    </selectKey>
+  </insert>  
+  
+  <delete id="delete" parameterType="me.quxiu.user.model.UserGroup" flushCache="true">  
+     <![CDATA[ delete from ve_user_group  where id =  #{id} ]]> 
+  </delete>
+</mapper>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.quxiu.user.mapper.UserLogMapper" >
+  <resultMap id="BaseResultMap" type="me.quxiu.user.model.UserLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="time_log" property="timeLog" jdbcType="TIMESTAMP" />
+    <result column="log_time_bak" property="logTimeBak" jdbcType="INTEGER" />
+    <result column="log_admin_id" property="logAdminId" jdbcType="INTEGER" />
+    <result column="log_user_id" property="logUserId" jdbcType="INTEGER" />
+    <result column="log_user_name" property="logUserName" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="point" property="point" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="me.quxiu.user.model.UserLog" extends="BaseResultMap" >
+    <result column="log_info" property="logInfo" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ul.id , ul.time_log, ul.log_time_bak, ul.log_admin_id, ul.log_user_id, ul.log_user_name, ul.money, ul.score, 
+    ul.point, ul.user_id, ul.ip
+  </sql>
+  <sql id="Blob_Column_List" >
+    ul.log_info
+  </sql>
+  <select id="get" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ve_user_log ul
+    where ul.id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="getUserLogListPage" parameterType="map" resultMap="BaseResultMap" useCache="false">
+  	  <include refid="getUserLogList"/>
+  </select>
+  <sql id="getUserLogList">
+  	  select distinct 
+  	  	<include refid="Base_Column_List" />
+	    ,
+	    <include refid="Blob_Column_List" />
+	  from ve_user_log ul
+  	  where ul.user_id = #{query.userId,jdbcType=INTEGER}
+  	  order by ul.id desc
+  </sql>
+ 
+ 
+   <delete id="delete" parameterType="java.lang.Integer" flushCache="true">  
+     <![CDATA[ delete from ve_user_log  where id =  #{id} ]]> 
+   </delete> 
+</mapper>

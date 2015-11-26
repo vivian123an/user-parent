@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.quxiu.user.mapper.ReferralsMapper" >
+  <resultMap id="BaseResultMap" type="me.quxiu.user.model.Referrals" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="rel_user_name" property="relUserName" jdbcType="VARCHAR" />
+    <result column="rel_user_id" property="relUserId" jdbcType="INTEGER" />
+    <result column="money" property="money" jdbcType="DOUBLE" />
+    <result column="time_create" property="timeCreate" jdbcType="TIMESTAMP" />
+    <result column="time_pay" property="timePay" jdbcType="TIMESTAMP" />
+    <result column="create_time_bak" property="createTimeBak" jdbcType="INTEGER" />
+    <result column="pay_time_bak" property="payTimeBak" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    vr.id , vr.user_name, vr.user_id, vr.rel_user_name, vr.rel_user_id, vr.money, vr.time_create, vr.time_pay, 
+    vr.create_time_bak, vr.pay_time_bak, vr.order_id, vr.score
+  </sql>
+  
+  <select id="customSelect" parameterType="map" resultType="hashmap">
+    select ${outColumns} from ve_referrals where ${keyColumn} = #{keyValue} limit 0,1
+  </select>
+  
+  <select id="getReferralsListPage" parameterType="map" resultMap="BaseResultMap" useCache="false">
+  	  <include refid="getReferralsList"/>
+  </select>
+  <sql id="getReferralsList">
+  	  select distinct 
+  	  	<include refid="Base_Column_List"/>
+	  from ve_referrals vr
+  	  <where>
+	  	<include refid="referralsQuery_whereConditions"/>
+  	  </where>
+  	  order by vr.id desc
+  </sql>
+  <sql id="referralsQuery_whereConditions">
+	 <if test="query.orderId != null">
+	  	and vr.order_id like #{query.orderId}
+	 </if>
+	 <if test="query.userId != null">
+	  	and vr.user_id = #{query.userId}
+	 </if>
+	 <if test="query.relUserId != null">
+	  	and vr.rel_user_id = #{query.relUserId}
+	 </if>
+  </sql>
+  
+  
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ve_referrals vr
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="save" parameterType="me.quxiu.user.model.Referrals" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+    insert into ve_referrals
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="relUserName != null" >
+        rel_user_name,
+      </if>
+      <if test="relUserId != null" >
+        rel_user_id,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="timeCreate != null" >
+        time_create,
+      </if>
+      <if test="timePay != null" >
+        time_pay,
+      </if>
+      <if test="createTimeBak != null" >
+        create_time_bak,
+      </if>
+      <if test="payTimeBak != null" >
+        pay_time_bak,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="relUserName != null" >
+        #{relUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="relUserId != null" >
+        #{relUserId,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="timeCreate != null" >
+        #{timeCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timePay != null" >
+        #{timePay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTimeBak != null" >
+        #{createTimeBak,jdbcType=INTEGER},
+      </if>
+      <if test="payTimeBak != null" >
+        #{payTimeBak,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+    </trim>
+	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+       SELECT LAST_INSERT_ID();  
+    </selectKey>    
+  </insert>
+  <update id="update" parameterType="me.quxiu.user.model.Referrals" >
+    update ve_referrals
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="relUserName != null" >
+        rel_user_name = #{relUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="relUserId != null" >
+        rel_user_id = #{relUserId,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="timeCreate != null" >
+        time_create = #{timeCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timePay != null" >
+        time_pay = #{timePay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTimeBak != null" >
+        create_time_bak = #{createTimeBak,jdbcType=INTEGER},
+      </if>
+      <if test="payTimeBak != null" >
+        pay_time_bak = #{payTimeBak,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <insert id="saveBatch" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+  	insert into ve_referrals(user_name, user_id, rel_user_name, rel_user_id, money, time_create, time_pay, create_time_bak, pay_time_bak, order_id, score) values
+  	<foreach collection="list" item="item" index="index" separator=",">  
+	    <trim prefix="(" suffix=")" suffixOverrides=",">
+			<choose>
+				<when test="item.userName == null">'',</when>
+				<otherwise>#{item.userName},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.userId == null">0,</when>
+				<otherwise>#{item.userId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.relUserName == null">'',</when>
+				<otherwise>#{item.relUserName},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.relUserId == null">0,</when>
+				<otherwise>#{item.relUserId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.money == null">'',</when>
+				<otherwise>#{item.money},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.timeCreate == null">0000-00-00 00:00:00,</when>
+				<otherwise>#{item.timeCreate},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.timePay == null">0000-00-00 00:00:00,</when>
+				<otherwise>#{item.timePay},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.createTimeBak == null">0,</when>
+				<otherwise>#{item.createTimeBak},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.payTimeBak == null">0,</when>
+				<otherwise>#{item.payTimeBak},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.orderId == null">0,</when>
+				<otherwise>#{item.orderId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.score == null">0,</when>
+				<otherwise>#{item.score},</otherwise>
+			</choose>
+	    </trim>
+    </foreach>
+  	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+    	SELECT LAST_INSERT_ID();  
+    </selectKey>
+  </insert>  
+  
+  <delete id="delete" parameterType="me.quxiu.user.model.Referrals" flushCache="true">  
+     <![CDATA[ delete from ve_referrals  where id =  #{id} ]]> 
+  </delete>
+</mapper>

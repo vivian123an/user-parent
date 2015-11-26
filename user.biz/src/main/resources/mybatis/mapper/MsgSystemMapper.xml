@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.quxiu.user.mapper.MsgSystemMapper" >
+  <resultMap id="BaseResultMap" type="MsgSystem" >
+    <id column="id" property="id" javaType="java.lang.Long" />
+    <result column="title" property="title" javaType="java.lang.String" />
+    <result column="content" property="content" javaType="java.lang.String"  />
+    <result column="create_time" property="createTime" javaType="java.util.Date"/>
+    <result column="user_names" property="userNames" javaType="java.lang.String"  />
+    <result column="user_ids" property="userIds" javaType="java.lang.String" />
+    <result column="end_time" property="endTimes" javaType="java.util.Date" />
+ </resultMap>
+ 
+ <select id="getMsgSystemList" parameterType="map" resultMap="BaseResultMap">
+ 	select id ,title,content,create_time createTime,user_names userNames,user_ids userIds,end_time endTime from ve_msg_system order by id
+ 	limit #{startIndex},#{pageSize}
+ </select>
+ 
+ <select id="queryAllRows" resultType="java.lang.Integer">
+ 	select count(1) from ve_msg_system
+ </select>
+ 
+ <delete id="deleteByIds" parameterType="map">
+ 	delete from ve_msg_system where id in (#{ids})
+ </delete>
+ 
+ <update id="update" parameterType="MsgSystem">
+ 
+ 	update ve_msg_system
+ 	<set>
+ 		<if test="title != null">
+ 			title = #{title},
+ 		</if>
+ 		<if test="content != null">
+ 			content = #{content},
+ 		</if>
+ 		<if test="userIds != null">
+ 			user_ids = #{userIds},
+ 		</if>
+ 		<if test="endTime != null">
+ 			end_time = #{endTime}
+ 		</if>
+ 	</set>
+ 	 where id = #{id}
+ 	
+ </update>
+ 
+  
+</mapper>

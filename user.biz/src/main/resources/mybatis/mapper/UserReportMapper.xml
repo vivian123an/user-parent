@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.quxiu.user.mapper.UserReportMapper">
+	<resultMap id="BaseResultMap" type="UserReport">
+		<id column="id" property="id" javaType="java.lang.Long" />
+		<result column="time_create" property="registTime" javaType="java.util.Date" />
+		<result column="user_name" property="userName" javaType="java.lang.String" />
+	</resultMap>
+
+	<sql id="Base_Colun_list">
+		tr.id id,tr.time_create time_create,tr.user_name user_name
+	</sql>
+
+	<select id="queryUserReportList" parameterType="map" resultMap="BaseResultMap">
+
+		select
+		<include refid="Base_Colun_list" />
+		from ve_user tr
+		where 1=1
+		<include refid="whereCondition" />
+		order by id
+		limit #{startIndex},#{pageSize}
+	</select>
+
+	<select id="queryAllRows" resultType="java.lang.Integer">
+		select count(1) from ve_user tr
+		where 1=1
+		<include refid="whereCondition" />
+	</select>
+
+	<sql id="whereCondition">
+
+		<if test="query.toRegistTime!=null">
+			and tr.time_create >= #{query.toRegistTime}
+		</if>
+		<if test="query.endRegistTime!=null">
+			<![CDATA[ and tr.time_create <= #{query.endRegistTime} ]]>
+		</if>
+
+	</sql>
+
+
+
+</mapper>

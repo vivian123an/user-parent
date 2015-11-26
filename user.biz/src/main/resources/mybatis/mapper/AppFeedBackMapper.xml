@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.quxiu.user.mapper.AppFeedBackMapper">
+	<resultMap id="BaseResultMap" type="AppFeedBack">
+		<id column="id" property="id" javaType="java.lang.Long" />
+		<result column="userid" property="userId" javaType="java.lang.Long" />
+		<result column="contact" property="contact" javaType="java.lang.String" />
+		<result column="content" property="content" javaType="java.lang.String" />
+		<result column="ctime" property="cTime" javaType="java.util.Date" />
+		<result column="type" property="type" javaType="java.lang.String" />
+		<result column="status" property="status" javaType="java.lang.Integer" />
+	</resultMap>
+
+
+	 <sql id="Base_Colun_list">
+
+		tr.id id ,tr.userid userid,tr.contact contact ,tr.content	content
+		,tr.ctime ctime,tr.type type ,tr.status	status
+	</sql>
+
+	<select id="queryInfoList" resultMap="BaseResultMap"
+		parameterType="map">
+
+		select
+		<include refid="Base_Colun_list" />
+		from ve_app_feedback tr
+		
+		where 1=1 
+		<include refid="whereCondition"/>
+		
+		 order by tr.id
+		limit #{startIndex},#{pageSize}
+
+	</select>
+	
+
+	<select id="queryAllRows" resultType="java.lang.Integer" parameterType="map">
+		select count(1) from
+		ve_app_feedback tr
+		where 1=1 
+		<include refid="whereCondition"/>
+	</select> 
+	
+	<sql id="whereCondition">
+	
+		<if test="query.id!=null">
+			and tr.id=#{query.id}
+		</if>
+		<if test="query.status!=null">
+			and tr.status = #{query.status}
+		</if>
+		<if test="query.question!=null">
+			and tr.content like CONCAT('%',#{query.question},'%') 
+		</if>
+		<if test="query.contact!=null">
+			and tr.contact like CONCAT('%',#{query.contact},'%') 
+		</if>
+		<if test="query.start_feedback_time!=null">
+			and tr.ctime >= #{query.start_feedback_time}
+		</if>
+		<if test="query.end_feedback_time!=null">
+			<![CDATA[ and tr.ctime <= #{query.end_feedback_time} ]]>    
+		</if>
+		
+	</sql>
+
+	<delete id="deleteByIds" parameterType="java.lang.String">
+		delete from ve_app_feekback
+		where id  in (#{ids})
+	</delete>
+
+
+</mapper>
